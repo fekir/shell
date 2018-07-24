@@ -65,6 +65,13 @@ export PASSWORD_STORE_DIR
 LESSHISTFILE=/dev/null
 export LESSHISTFILE
 
+# [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+if [ -z ${LESSOPEN+x} ] && [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
+  LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh "%s"'
+  export LESSOPEN
+  LESS=' -R '
+  export LESS
+fi
 
 # automatically invoke make with -j"numberofoprocs".
 # It can be overridden by using -j explicitly
