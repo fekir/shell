@@ -49,8 +49,26 @@ export JAVA_TOOL_OPTIONS
 #export GRADLE_USER_HOME="$XDG_CACHE_HOME/gradle" # does work only partially... lock files still in .gradle
 #export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CACHE_HOME/java"
 
-IDEA_PROPERTIES=$HOME/.config/jetbrains/idea.prop
+IDEA_PROPERTIES=$HOME/.config/jetbrains/idea.prop # IntelliJ IDEA
 export IDEA_PROPERTIES
+CL_PROPERTIES=$HOME/.config/jetbrains/idea.prop # IntelliJ IDEA
+export CL_PROPERTIES
+PYCHARM_PROPERTIES=$HOME/.config/jetbrains/idea.prop # IntelliJ IDEA
+export PYCHARM_PROPERTIES
+STUDIO_PROPERTIES=$HOME/.config/jetbrains/idea.prop # IntelliJ IDEA
+export STUDIO_PROPERTIES
+WEBIDE_PROPERTIES=$HOME/.config/jetbrains/idea.prop # IntelliJ IDEA
+export WEBIDE_PROPERTIES
+#    APPCODE_PROPERTIES - AppCode
+#    DATAGRIP_PROPERTIES - DataGrip
+#    WebStorm
+#    PHPSTORM_PROPERTIES - PhpStorm
+#    GOLAND_PROPERTIES - GoLand
+#    RIDER_PROPERTIES - Rider
+
+__GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export __GL_SHADER_DISK_CACHE_PATH
+#export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 
 WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export WGETRC
