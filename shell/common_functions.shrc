@@ -61,7 +61,7 @@ define_alias_opt() {
 # remove all duplicates from path
 # FIXME: on windows we should be case insensitive and normalize (windows/unix path) all paths
 # since : is present on windows as path separator, we have a problem...
-rem_dup_from_path(){
+rem_dup_from_path() {
   if [ -n "$PATH" ]; then
     old_PATH=$PATH:;
     while [ -n "$old_PATH" ]; do
@@ -80,7 +80,7 @@ rem_dup_from_path(){
 
 # checks if dir exists and adds it to path if not already present
 # fixme: on windows we should convert it to an unix path
-append_to_path(){
+append_to_path() {
   if [ -d "$1" ]; then
     case ":$PATH:" in
       *":$1:"*) :;; # already there, do not add it
@@ -108,29 +108,28 @@ repair_dir_perm() {
 # globbing is your enemy here!
 #FIXME: if directory matches pattern -> "error"
 # try to apply: https://stackoverflow.com/questions/11456403/stop-shell-wildcard-character-expansion
-find_in_file(){
-  if [ -z "$2" ]; then
-    NAME="*"
-    CONTENT="$1"
-  else
-    NAME="$1"
-    CONTENT="$2"
+find_in_file() {
+  if [ -z "$2" ]; then :;
+    NAME="*";
+    CONTENT="$1";
+  else :;
+    NAME="$1";
+    CONTENT="$2";
   fi
-  find . -name "$NAME" -exec grep --with-filename --color -n --directories skip "$CONTENT" {} \;
+  find . -name "$NAME" -exec grep --with-filename --color -n --directories skip "$CONTENT" {} \; ;
 }
 #alias find_in_file='set -f;find_in_file;' # removes globbing completely, not just for this command!
 
 print_color_support() {
   printf '\n'
   i=0
-  while [ $((i+=1)) -le 255 ]
-  do
-    printf "\x1b[38;5;${i}m%03d " ${i}
+  while [ $((i+=1)) -le 255 ]; do :;
+    printf "\\x1b[38;5;${i}m%03d " "${i}";
   done
-  printf '\n\n'
+  printf '\n\n';
 
-  printf 'COLORTERM: %s\n' "$COLORTERM"
-  printf 'TERM:      %s\n' "$TERM"
+  printf 'COLORTERM: %s\n' "$COLORTERM";
+  printf 'TERM:      %s\n' "$TERM";
 #https://gist.github.com/XVilka/8346728
 awk 'BEGIN{
     s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
@@ -159,7 +158,7 @@ clean_txt_file() {
 }
 
 to_ascii_file(){
-  clean_txt_file "$1"
+  clean_txt_file "$1";
 
   sed -i -e 's/ü/ue/g' "$1" -e 's/ä/ae/g' "$1" -e 's/ö/oe/g' "$1" \
          -e 's/Ü/UE/g' "$1" -e 's/Ä/AE/g' "$1" -e 's/Ö/OE/g' "$1" \
@@ -178,14 +177,11 @@ to_ascii_file(){
 
 # not all programs support truecolor, but they may support and detect *-256 color
 detect_term() {
-  if [ "$COLORTERM" = "truecolor" ]
-  then
-    if [ "$TERM" = "xterm" ]; then
-      TERM='xterm-256color'
-      export TERM
-    elif [ "$TERM" = "screen" ]; then
-      TERM='screen-256color'
-      export TERM
+  if [ "$COLORTERM" = "truecolor" ]; then :;
+    if [ "$TERM" = "xterm" ]; then :;
+      export TERM='xterm-256color';
+    elif [ "$TERM" = "screen" ]; then :;
+      export TERM='screen-256color';
     fi
   fi
 }
@@ -204,16 +200,16 @@ tmux_leave_session_for(){
     return $?;
   fi
 
-  CURRENV=$(tmux display-message -p '#S')
-  if [ "$CURRENV" = "$MYENV" ]; then
+  CURRENV=$(tmux display-message -p '#S');
+  if [ "$CURRENV" = "$MYENV" ]; then :;
     return 0;
   fi
 
   tmux switch -t "$MYENV" || return 2;
   # kill previous session if empty
-  NUMWIN=$(tmux list-window -t "$CURRENV" | wc -l)
-  NUMPANES=$(tmux list-panes -t "$CURRENV" | wc -l)
-  if [ "$NUMWIN" -eq "1" ] && [ "$NUMPANES" -eq "1" ]; then
+  NUMWIN=$(tmux list-window -t "$CURRENV" | wc -l);
+  NUMPANES=$(tmux list-panes -t "$CURRENV" | wc -l);
+  if [ "$NUMWIN" -eq "1" ] && [ "$NUMPANES" -eq "1" ]; then :;
     tmux kill-session -t "$CURRENV";
   fi
   return 0;
