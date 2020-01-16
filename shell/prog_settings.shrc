@@ -28,6 +28,10 @@ export GPRC
 export PYTHONDONTWRITEBYTECODE=1
 
 export SYSSCREENRC="$XDG_CONFIG_HOME/screenrc"
+export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
+
+export TMP=${TMP:-${TEMP:-${TMPDIR:-/tmp}}}
+export TMPDIR=${TMPDIR:-${TMP:-${TEMP:-/tmp}}}
 
 WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WEECHAT_HOME
