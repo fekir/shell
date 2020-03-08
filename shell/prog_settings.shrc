@@ -30,6 +30,8 @@ export PYTHONDONTWRITEBYTECODE=1
 export SYSSCREENRC="$XDG_CONFIG_HOME/screenrc"
 export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 
+export XMLLINT_INDENT=$'\t'
+
 export TMP=${TMP:-${TEMP:-${TMPDIR:-/tmp}}}
 export TMPDIR=${TMPDIR:-${TMP:-${TEMP:-/tmp}}}
 
