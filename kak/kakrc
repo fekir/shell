@@ -1,0 +1,7 @@
+# Change cursor color in insert mode, do not use | as cursor as kakoune has no 0-width selection
+hook global ModeChange insert:.* %{
+    set-face global PrimaryCursor      rgb:ffffff,rgb:000000+F
+}
+hook global ModeChange .*:insert %{
+    set-face global PrimaryCursor      rgb:ffffff,rgb:008800+F
+}
