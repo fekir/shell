@@ -6,10 +6,12 @@ BellType=0
 
 Columns=140
 Rows=30
-BackgroundColour=15,15,15
-FontHeight=10
+FontHeight=13
 
 ClipShortcuts=yes
 Locale=en_US
 Charset=UTF-8
 DeleteSendsDEL=no
+CtrlAltIsAltGr=no
+ComposeKey=off
+ClicksPlaceCursor=no
